@@ -1,0 +1,9 @@
+BORUTA:['B21', 'B22', 'B24', 'B45', 'B46', 'B47', 'B54', 'B67', 'B68', 'B85']
+array([False, False, False, False,  True,  True, False,  True, False,
+       False, False, False, False, False,  True,  True,  True, False,
+       False, False, False,  True, False, False, False, False, False,
+       False,  True,  True, False, False, False, False, False, False,
+       False, False, False,  True])
+BOXPLOT (VAR BASURAS): varBasuras=['B11','B13','B14','B21','B23','B24','B46','B48',
+            'B51','B52','B53','B54','B61','B62','B63','B64',
+            'B65','B66','B67','B611','B85']
