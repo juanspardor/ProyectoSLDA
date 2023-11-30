@@ -33,4 +33,11 @@ camino = "/Users/juanse/Downloads/resultados3.csv"
 write.csv(result_df, file = camino, row.names = FALSE)
 
 
+#Hagamos la prueba con Boosting
+library(gbm)
 
+boost = gbm(V1~., data = trainReg, n.trees = 200)
+predicciones5 = predict(boost, testReg)
+result_df <- data.frame(Id = 1:length(predicciones4), y = predicciones5)
+camino = "/Users/juanse/Downloads/resultados5.csv"
+write.csv(result_df, file = camino, row.names = FALSE)
