@@ -3,6 +3,8 @@
 library(randomForest)
 randFor = randomForest(V1~., data = trainReg, mtry=9, maxnodes=3, ntree = 1000)
 predicciones = predict(randFor, testReg)
+plot(randFor$importance)
+varImpPlot(randFor, main = "Variable Importance Plot", col = "blue")
 
 result_df <- data.frame(Id = 1:length(predicciones), y = predicciones2)
 
@@ -41,3 +43,20 @@ predicciones5 = predict(boost, testReg)
 result_df <- data.frame(Id = 1:length(predicciones4), y = predicciones5)
 camino = "/Users/juanse/Downloads/resultados5.csv"
 write.csv(result_df, file = camino, row.names = FALSE)
+
+
+#Prueba con SVM + RF
+library(e1071)
+featuresSVM = trainReg[,c(1,2,9, 64, 47, 12, 37)]
+head(featuresSVM)
+modeloSVM = svm(V1~., data = featuresSVM)
+
+rang=list(cost=c(0.01,0.05,0.1,1,2,5),gamma=c(0.1,0.5,1,2))
+
+set.seed(3)
+
+#Tunning en dos parametros de calibracion
+tune_svm=tune(svm,V1~., data = featuresSVM,
+              ranges=rang)
+
+tune_svm
