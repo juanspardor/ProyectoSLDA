@@ -33,6 +33,9 @@ min(matrizRF)
 #El que da mejor es la ultima
 
 modeloRFTuned = randomForest(V1~., data = trainOut, mtry = 15, maxnodes = 6, ntree = 500)
+plot(modeloRFTuned$importance)
+varImpPlot(modeloRFTuned, main = "Variable Importance Plot", col = "blue")
+
 predRFTn = predict(modeloRFTuned, testReg)
 result_df <- data.frame(Id = 1:length(predRFTn), y = predRFTn)
 camino = "/Users/juanse/Downloads/resultadosRFtuned2.csv"
