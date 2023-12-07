@@ -66,7 +66,7 @@ X3$y=as.factor(dataset$FRACASO)
 lambda_values
 library(glmnet)
 X3<-as.matrix(X3)
-lasso<-cv.glmnet(X3,dataset$FRACASO,alpha=0,family='binomial',nfolds=10)
+lasso<-cv.glmnet(X3,dataset$FRACASO,alpha=0.3,family='binomial',nfolds=10)
 
 lambda=lasso$lambda.min
 lambda
